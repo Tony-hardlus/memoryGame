@@ -13,12 +13,14 @@ from random import *
 from turtle import *
 
 from freegames import path
+import numpy as np
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
-
+# se crea variable np para contar taps
+numTaps = 0
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
@@ -47,15 +49,21 @@ def tap(x, y):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
+    global numTaps
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
 
+    
+    numTaps+=1
+    print("Número de Taps: "+str(numTaps))
 
+        
 def draw():
     """Draw image and tiles."""
     clear()
