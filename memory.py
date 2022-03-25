@@ -13,6 +13,12 @@ hide = [True] * 64
 # se crea variable np para contar taps
 numTaps = 0
 
+#Cambio: Array para los indices como letras y simbolos, por si acaso las letras no bastan.
+
+otherind =  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
+'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 
+'X', 'Y', 'Z''*','?','¿','!','+','-','$']
+
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
     up()
@@ -79,7 +85,9 @@ def draw():
         # se centró texto modificando valores sumados a x y y
         goto(x + 25, y+ 2)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'), align = "center")
+        tilmark = tiles[mark]
+        write(otherind[tilmark], font=('Arial', 30, 'normal'), align = "center")
+        #cambio para que las letras aparezcan.
 
     update()
     ontimer(draw, 100)
